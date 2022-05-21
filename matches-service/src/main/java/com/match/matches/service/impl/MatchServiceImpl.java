@@ -2,6 +2,8 @@ package com.match.matches.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.match.matches.domain.MatchGame;
 import com.match.matches.dto.GetMatchesDTO;
 import com.match.matches.dto.MatchGameDTO;
@@ -20,10 +22,11 @@ public class MatchServiceImpl implements MatchService{
     private final MatchMapper matchMapper;
     private final MatchGameRepository matchGameRepository;
     
-    @Override  
+    @Override
+    @Transactional  
     public MatchGame createMatchGame(MatchGameDTO matchGameDTO) {
         MatchGame match = matchMapper.matchMapper(matchGameDTO);
-
+        
         return matchGameRepository.save(match);
     }
 

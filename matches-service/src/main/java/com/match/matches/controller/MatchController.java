@@ -32,7 +32,7 @@ public class MatchController {
         ResponseDTO response = new ResponseDTO();
 
         MatchGame match = matchService.createMatchGame(matchGameDTO);
-        matchGameRepository.save(match);
+       
         response.setId(match.getId());
         response.setUrl("/match/"+match.getId());
    

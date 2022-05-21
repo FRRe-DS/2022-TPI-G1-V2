@@ -15,13 +15,15 @@ public class TicketsMapper {
         List<MatchTicket> tickets = new ArrayList<MatchTicket>();
 
         for (TicketsGameDTO ticket : ticketsGameDTO) {
-            tickets.add(
-                MatchTicket.builder()
-                    .buyed(false)
-                    .position(ticket.getPosition())
-                    .cost(ticket.getCost())
-                    .build()
-            );
+            for (int i = 0; i < ticket.getCount(); i++) {    
+                tickets.add(
+                    MatchTicket.builder()
+                        .buyed(false)
+                        .position(ticket.getPosition())
+                        .cost(ticket.getCost())
+                        .build()
+                );   
+            }
         }
         return tickets;
     }

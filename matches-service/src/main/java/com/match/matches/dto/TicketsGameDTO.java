@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class TicketsGameDTO {
-    private Long matchGame;
     private String position;
     private Double cost;
     private int count;
