@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.match.matches.domain.MatchGame;
+import com.match.matches.domain.MatchTicket;
 import com.match.matches.dto.GetMatchesDTO;
 import com.match.matches.dto.MatchGameDTO;
 
@@ -20,16 +21,27 @@ public class MatchMapper {
     
     public MatchGame matchMapper(MatchGameDTO matchGameDTO){
         
-        return MatchGame.builder()
+        MatchGame match = MatchGame.builder()
         .localTeam(matchGameDTO.getLocalTeam())
         .vistTeam(matchGameDTO.getVistTeam())
         .stadium(matchGameDTO.getStadium())
         .matchDate(convertStringToLocalDate(matchGameDTO.getMatchDate()))
         .matchTime(matchGameDTO.getMatchTime())
-        .tickets(ticketMapper.ticketMapper(matchGameDTO.getListTickets()))
         .build();
         
+        if(!matchGameDTO.getListTickets().isEmpty()) 
+        match = loadTickets(matchGameDTO,match);
+        
+        return match;
+    }
 
+    private MatchGame loadTickets(MatchGameDTO matchGameDTO, MatchGame match){
+        List<MatchTicket> listTickets = ticketMapper.ticketMapper(matchGameDTO.getListTickets());
+        for (MatchTicket matchTicket : listTickets) {
+            matchTicket.setMatchgame(match);
+        }
+        match.setTickets(listTickets);
+        return match;
     }
 
     public List<GetMatchesDTO> matchMapper(List<MatchGame> match){

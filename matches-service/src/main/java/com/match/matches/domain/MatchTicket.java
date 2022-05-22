@@ -1,5 +1,6 @@
 package com.match.matches.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class MatchTicket {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = {})
+    @OneToOne
     private MatchGame matchgame;
 
     @Column(name = "position", nullable = false, updatable = true)

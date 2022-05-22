@@ -45,6 +45,6 @@ public class MatchGame {
     @Column(name = "stadium", nullable = false, updatable = true)
     private String stadium;
 
-    @OneToMany(mappedBy = "matchgame",cascade = {CascadeType.PERSIST,CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+    @OneToMany(mappedBy = "matchgame",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MatchTicket> tickets = new ArrayList<MatchTicket>(); 
 }
