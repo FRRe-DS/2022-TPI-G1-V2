@@ -8,6 +8,7 @@ import com.match.matches.domain.MatchGame;
 import com.match.matches.domain.MatchTicket;
 import com.match.matches.dto.GetMatchesDTO;
 import com.match.matches.dto.MatchGameDTO;
+import com.match.matches.dto.TicketsGameDTO;
 
 import org.springframework.stereotype.Component;
 

@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import com.match.matches.domain.MatchGame;
+import com.match.matches.domain.MatchTicket;
 import com.match.matches.dto.GetMatchesDTO;
 import com.match.matches.dto.GetTicketsByMatchDTO;
 import com.match.matches.dto.MatchGameDTO;
@@ -59,5 +60,18 @@ public class MatchServiceImpl implements MatchService{
         }
         return listTickets;
     }
+
+    @Override
+    public Boolean deleteMatchById(Long id) {
+        Optional<MatchGame> match = matchGameRepository.findById(id);
+        if(match.isPresent()){
+            matchGameRepository.delete(match.get());
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     
 }
