@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.match.matches.domain.MatchGame;
 import com.match.matches.dto.ErrorDTO;
+import com.match.matches.dto.GetMatchByIdDTO;
 import com.match.matches.dto.GetMatchesDTO;
 import com.match.matches.dto.GetTicketsByMatchDTO;
 import com.match.matches.dto.MatchGameDTO;
@@ -72,6 +73,21 @@ public class MatchController {
             return new ResponseEntity<ErrorDTO>(error, HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<List<GetTicketsByMatchDTO>>(tickets, HttpStatus.OK);
+        } 
+        
+        
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getMatchById(@PathVariable(name = "id") Long id){
+        
+        GetMatchByIdDTO match = matchService.getMatchById(id);
+        
+        if(match == null){
+            ErrorDTO error = errorMapper.errorNotFoundMatch();
+            return new ResponseEntity<ErrorDTO>(error, HttpStatus.NOT_FOUND);
+        }else{
+            return new ResponseEntity<GetMatchByIdDTO>(match, HttpStatus.OK);
         } 
         
         

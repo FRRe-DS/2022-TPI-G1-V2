@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.match.matches.domain.MatchGame;
 import com.match.matches.domain.MatchTicket;
+import com.match.matches.dto.GetMatchByIdDTO;
 import com.match.matches.dto.GetMatchesDTO;
 import com.match.matches.dto.MatchGameDTO;
 import com.match.matches.dto.TicketsGameDTO;
@@ -67,5 +68,21 @@ public class MatchMapper {
     private LocalDate convertStringToLocalDate(String date){
         LocalDate local_date = LocalDate.parse(date);
         return local_date;
+    }
+
+    public GetMatchByIdDTO getMatchByIdMapper(MatchGame match){
+
+  
+        return GetMatchByIdDTO.builder()
+            .vistTeam(match.getVistTeam())
+            .localTeam(match.getLocalTeam())
+            .matchDate(match.getMatchDate())
+            .matchTime(match.getMatchTime())
+            .stadium(match.getStadium())
+            .url("/match/"+match.getId())
+            .listTickets(ticketMapper.ticketByMatchIdMapper(match.getTickets()))
+            .build();
+            
+
     }
 }

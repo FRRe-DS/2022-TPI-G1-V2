@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import com.match.matches.domain.MatchGame;
 import com.match.matches.domain.MatchTicket;
+import com.match.matches.dto.GetMatchByIdDTO;
 import com.match.matches.dto.GetMatchesDTO;
 import com.match.matches.dto.GetTicketsByMatchDTO;
 import com.match.matches.dto.MatchGameDTO;
@@ -69,6 +70,18 @@ public class MatchServiceImpl implements MatchService{
             return true;
         }else{
             return false;
+        }
+    }
+
+    @Override
+    public GetMatchByIdDTO getMatchById(Long id) {
+
+        Optional<MatchGame> match = matchGameRepository.findById(id);
+
+        if(match.isPresent()){
+            return matchMapper.getMatchByIdMapper(match.get());
+        }else{
+            return null;
         }
     }
 

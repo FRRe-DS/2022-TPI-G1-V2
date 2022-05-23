@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.match.matches.domain.MatchGame;
 import com.match.matches.domain.MatchTicket;
+import com.match.matches.dto.GetMatchByIdDTO;
 import com.match.matches.dto.GetTicketsByMatchDTO;
+import com.match.matches.dto.GetTicketsDTO;
 import com.match.matches.dto.TicketsGameDTO;
 
 import org.springframework.stereotype.Component;
@@ -44,8 +46,19 @@ public class TicketsMapper {
         return tickets;
     }
 
+    public List<GetTicketsDTO> ticketByMatchIdMapper(List<MatchTicket> ticketsGame){
+        List<GetTicketsDTO> tickets = new ArrayList<GetTicketsDTO>();
 
-
+        for (MatchTicket ticket : ticketsGame) {
+            tickets.add(
+                GetTicketsDTO.builder()
+                    .position(ticket.getPosition())
+                    .cost(ticket.getCost())
+                    .build()
+            );   
+        }
+        return tickets;
+    }
 
 
 }
