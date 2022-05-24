@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -27,6 +28,6 @@ public class HealthInsurance {
     @Column(name = "description", nullable = false, updatable = true)
     private String description; 
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, orphanRemoval = true)
+    @ManyToMany(cascade = {})
     private List<HealthService> services = new ArrayList<HealthService>();
 }
