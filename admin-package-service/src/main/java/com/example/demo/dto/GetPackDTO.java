@@ -26,9 +26,9 @@ public class GetPackDTO {
     private Boolean reserved;
     private int discount;
 
- //   private List<Long> healthInsurance = new ArrayList<>();
- //   private Long lodging;
-    private List<Object> matches = new ArrayList<>();
- //   private Long travel;
+      private List<Object> healthInsurance = new ArrayList<>();
+      private Object lodging;
+      private List<Object> matches = new ArrayList<>();
+      private Object travel;
     
 }

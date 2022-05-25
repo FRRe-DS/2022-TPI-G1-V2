@@ -12,5 +12,4 @@ import org.springframework.http.ResponseEntity;
 public interface PackService {
     public Pack createPack(PostPackDTO postPackDTO);
     public List<GetPackDTO> getAllPacks();
-    public ResponseEntity<?> getAllMatches(Long id);
 }

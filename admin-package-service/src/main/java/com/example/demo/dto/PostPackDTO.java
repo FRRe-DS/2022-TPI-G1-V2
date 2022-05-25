@@ -20,9 +20,9 @@ public class PostPackDTO {
     private String contact;
     private int discount;
 
- //   private List<Long> healthInsurance = new ArrayList<>();
- //   private Long lodging;
+    private List<Long> healthInsurance = new ArrayList<>();
+    private Long lodging;
     private List<Long> matches = new ArrayList<>();
- //   private Long travel;
+    private Long travel;
     
 }

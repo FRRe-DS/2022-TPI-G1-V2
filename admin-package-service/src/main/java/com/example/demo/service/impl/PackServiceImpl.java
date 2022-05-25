@@ -8,8 +8,6 @@ import com.example.demo.dto.GetPackDTO;
 import com.example.demo.dto.PostPackDTO;
 import com.example.demo.mapper.PackMapper;
 import com.example.demo.repository.PackRepository;
-import com.example.demo.request.GetMatchByIdDTO;
-import com.example.demo.service.MatchClientRest;
 import com.example.demo.service.PackService;
 
 import org.springframework.http.ResponseEntity;
@@ -21,7 +19,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PackServiceImpl implements PackService{
     
-    private final MatchClientRest matchClientRest;
     private final PackMapper packMapper;
     private final PackRepository packRepository;
 
@@ -45,12 +42,5 @@ public class PackServiceImpl implements PackService{
         }
         return listPackResponse;
     }
-
-    @Override
-    public ResponseEntity<?> getAllMatches(Long id) {
-        
-        return matchClientRest.getMatchById(id);
-    }
-
     
 }

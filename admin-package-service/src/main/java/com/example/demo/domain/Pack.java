@@ -55,12 +55,18 @@ public class Pack {
     private Boolean reserved;
 
     /**RELATIONSHIP */
+   @Column(name = "healthInsurance", nullable = false, updatable = true)
+   @ElementCollection(targetClass=Long.class)
+   private List<Long> healthInsurance = new ArrayList<>();
 
- //   private List<HealthInsurance> healthInsurance = new ArrayList<>();
- //   private Lodging lodging;
+   @Column(name = "lodging", nullable = false, updatable = true)
+   private Long lodging;
+   
    @Column(name = "matches", nullable = false, updatable = true)
    @ElementCollection(targetClass=Long.class)
    private List<Long> matches = new ArrayList<>();
- //   private Travel travel;
+
+   @Column(name = "travel", nullable = false, updatable = true)
+   private Long travel;
 
 }

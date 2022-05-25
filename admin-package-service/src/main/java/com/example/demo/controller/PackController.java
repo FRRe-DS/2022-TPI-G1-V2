@@ -58,11 +58,4 @@ public class PackController {
         }
         
     }
-
-    @GetMapping("/matches/{id}")
-    public Object getAllMatches(@PathVariable(name = "id") Long id){
-        return packServiceImpl.getAllMatches(id).getBody();
-        
-       
-    }
 }
