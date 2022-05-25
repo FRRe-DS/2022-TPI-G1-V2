@@ -24,7 +24,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/admin/package")
 public class PackController {
 
     private final PackServiceImpl packServiceImpl;

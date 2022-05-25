@@ -24,7 +24,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/travel")
 public class TravelController {
     private final ErrorMapper errorMapper;
     private final TravelServiceImpl travelServiceImpl;

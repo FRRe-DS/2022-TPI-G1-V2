@@ -28,7 +28,6 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/match")
 public class MatchController {
     
     private final MatchServiceImpl matchService;

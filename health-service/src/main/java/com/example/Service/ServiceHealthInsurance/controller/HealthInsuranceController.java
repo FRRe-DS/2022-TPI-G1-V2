@@ -27,7 +27,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/health")
 public class HealthInsuranceController {
 //@RequestPart(value="character", required=true) Character character
     private final HealthInsuranceServiceImpl healthInsuranceServiceImpl;

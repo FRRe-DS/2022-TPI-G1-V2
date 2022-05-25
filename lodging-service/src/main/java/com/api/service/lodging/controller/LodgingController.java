@@ -24,7 +24,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/lodging")
 public class LodgingController {
     
     private final LodgingServiceImpl lodgingServiceImpl;
