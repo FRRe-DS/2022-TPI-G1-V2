@@ -30,7 +30,7 @@ Aqui presentamos que cosas necesitas para correr la aplicacion.
 
 - [MYSQL 8.0](https://www.postgresql.org/download/) - Base de datos
 - [Dbeaver-ce](https://dbeaver.io/download/) - Herramienta de administracion de datos 
-- [DbVisualizer]https://www.dbvis.com/) - Herramienta de administracion de datos 
+- [DbVisualizer](https://www.dbvis.com/) - Herramienta de administracion de datos 
 - [Java 11](https://www.oracle.com/ar/java/technologies/javase/jdk11-archive-downloads.html) - Lenguaje de programacion
 - [Maven 4.0.0](https://maven.apache.org/index.html) - Manejador de dependencias
 - [Spring-Boot](https://spring.io/projects/spring-boot) - Framework
