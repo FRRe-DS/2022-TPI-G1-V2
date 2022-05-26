@@ -13,9 +13,9 @@ public class ErrorMapper {
     public ErrorDTO errorNotFoundResouce(){
         
         return ErrorDTO.builder()
-            .code(404)
+            .code(400)
             .error(true)
-            .message("Resouce not found")
+            .message("Bad Request")
             .build();
     }
 }

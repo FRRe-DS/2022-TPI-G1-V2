@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "45189a28-3364-4eb6-bd6d-ed5f354cbb2b",
+		"name": "Package Admin Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST PACKAGE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Nuevo paquete para partido\",\n    \"cost\":500,\n    \"description\":\"Nuevo paquete para partido\",\n    \"contact\":\"viajes@gmail.com\",\n    \"matches\":[6]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/v1/admin/package",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"package"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL PACKAGES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/v1/admin/package",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"admin",
+						"package"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

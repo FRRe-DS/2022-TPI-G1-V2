@@ -25,6 +25,8 @@ public class HealthInsuranceServiceImpl implements HealthInsuranceService{
     private final HealthServiceRepository healthServiceRepository;
     @Override
     public HealthInsurance createHealth(HealthInsuranceDTO healthInsuranceDTO) {
+        if(healthInsuranceDTO.getServices().isEmpty()) 
+        return null; 
         
         return healthInsuranceRepository.save(
             healthInsuranceMapper.healthInsuranceMapper(healthInsuranceDTO));

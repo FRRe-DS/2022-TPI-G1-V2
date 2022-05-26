@@ -34,15 +34,21 @@ public class HealthInsuranceController {
 
 
     @PostMapping
-    public ResponseEntity<ResponseDTO> createHealthInsurance(@RequestBody HealthInsuranceDTO healthInsuranceDTO){
+    public ResponseEntity<?> createHealthInsurance(@RequestBody HealthInsuranceDTO healthInsuranceDTO){
         ResponseDTO responseDTO = new ResponseDTO();
 
         HealthInsurance healthInsurance = healthInsuranceServiceImpl.createHealth(healthInsuranceDTO);
 
-        responseDTO.setId(healthInsurance.getId());
-        responseDTO.setUrl("/health"+healthInsurance.getId());
-        
-        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.CREATED);
+        if(healthInsurance != null){
+            responseDTO.setId(healthInsurance.getId());
+            responseDTO.setUrl("/health"+healthInsurance.getId());
+            
+            return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.CREATED);
+        }else{
+            ErrorDTO error = errorMapper.errorBadRequestHealthInsurance();
+            return new ResponseEntity<ErrorDTO>(error, HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @GetMapping
@@ -57,7 +63,7 @@ public class HealthInsuranceController {
         Boolean response = healthInsuranceServiceImpl.deleteHealthServiceById(id);
         
         if(response == false){
-            ErrorDTO error = errorMapper.errorNotFoundMatch();
+            ErrorDTO error = errorMapper.errorNotFoundHealthInsurance();
             return new ResponseEntity<ErrorDTO>(error, HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<String>
@@ -70,7 +76,7 @@ public class HealthInsuranceController {
         HealthInsurance healthInsurance = healthInsuranceServiceImpl.getHealthServiceById(id);
         
         if(healthInsurance == null){
-            ErrorDTO error = errorMapper.errorNotFoundMatch();
+            ErrorDTO error = errorMapper.errorNotFoundHealthInsurance();
             return new ResponseEntity<ErrorDTO>(error, HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<HealthInsurance>

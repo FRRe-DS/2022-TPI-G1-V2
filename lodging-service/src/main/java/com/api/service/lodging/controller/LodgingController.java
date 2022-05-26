@@ -32,13 +32,18 @@ public class LodgingController {
     public ResponseEntity<?> createdLodging(@RequestBody LodgingDTO lodgingDTO){
         Lodging lodging = lodgingServiceImpl.createLodging(lodgingDTO);
 
-        ResponseDTO response = new ResponseDTO();
+        if(lodging == null){
+            ResponseDTO response = new ResponseDTO();
         
-        response.setId(lodging.getId());
-        response.setUrl("/lodging"+lodging.getId());
+           response.setId(lodging.getId());
+           response.setUrl("/lodging"+lodging.getId());
 
-
-        return new ResponseEntity<ResponseDTO>(response, HttpStatus.CREATED);
+            return new ResponseEntity<ResponseDTO>(response, HttpStatus.CREATED);
+        }else{
+            ErrorDTO error = errorMapper.errorBadRequestLodging();
+            return new ResponseEntity<ErrorDTO>(error, HttpStatus.BAD_REQUEST);
+        }
+        
     }
 
     @GetMapping
@@ -60,7 +65,7 @@ public class LodgingController {
         GetLodgingDTO lodging =  lodgingServiceImpl.getLodgingById(id);
 
         if(lodging == null){
-            ErrorDTO error = errorMapper.errorNotFoundMatch();
+            ErrorDTO error = errorMapper.errorNotFoundLodging();
             return new ResponseEntity<ErrorDTO>(error, HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<GetLodgingDTO>(lodging,  HttpStatus.OK);
@@ -74,7 +79,7 @@ public class LodgingController {
         Boolean response = lodgingServiceImpl.deleteLodgingById(id);
 
         if(response == false){
-            ErrorDTO error = errorMapper.errorNotFoundMatch();
+            ErrorDTO error = errorMapper.errorNotFoundLodging();
             return new ResponseEntity<ErrorDTO>(error, HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<Object>(Object.class,  HttpStatus.OK);

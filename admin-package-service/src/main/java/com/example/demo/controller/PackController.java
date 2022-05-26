@@ -41,7 +41,7 @@ public class PackController {
             return new ResponseEntity<ResponseDTO>(response, HttpStatus.CREATED);
         }else{
             ErrorDTO error = errorMapper.errorNotFoundResouce();
-            return new ResponseEntity<ErrorDTO>(error, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<ErrorDTO>(error, HttpStatus.BAD_REQUEST);
         }
 
     }

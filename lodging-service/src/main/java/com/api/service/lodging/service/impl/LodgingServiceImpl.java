@@ -24,8 +24,10 @@ public class LodgingServiceImpl implements LodgingService{
 
     @Override
     public Lodging createLodging(LodgingDTO lodgingDTO) {
+        if(lodgingDTO.getListRooms().isEmpty())
+        return null;
+        
         Lodging lodging = lodgingMapper.lodgingMapper(lodgingDTO);
-
         return lodgingRepository.save(lodging);
     }
 

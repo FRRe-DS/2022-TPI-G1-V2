@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "4b7b013a-54f6-48b1-b877-731d734c9e55",
+		"name": "Travel service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE TRAVEL",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"descripcion\":\"El mejor servicio de viaje\", \n    \"travelTime\" : \"5 horas de viaje\",\n    \"travelDate\" : \"2022-11-27\",\n    \"travelHour\" : \"18:00 horario argentino\",\n    \"localization\" : \"Aeropuerto argentino\",\n    \"service\" : \"Servicio de clase 3\",\n    \"type\" : \"Viaje en avion\",\n    \"company\" : \"Aerolineas argentinas\",\n    \"tickets\":[\n        {\n            \"numberTravel\": 1,\n            \"position\" : \"Asiento A2\"\n        },\n        {\n            \"numberTravel\": 2,\n            \"position\" : \"Asiento A4\"\n        },\n        {\n            \"numberTravel\": 3,\n            \"position\" : \"Asiento A5\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/v1/travel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"travel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL TRAVELS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/v1/travel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"travel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET TRAVEL BY ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/v1/travel/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"travel",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE TRAVEL BY ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/v1/travel/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"travel",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
