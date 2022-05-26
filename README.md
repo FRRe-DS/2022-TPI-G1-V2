@@ -39,6 +39,9 @@ Aqui presentamos que cosas necesitas para correr la aplicacion.
 ### Capa de datos (Modelo entidad relacion)
 ![Vista desde Dbeaver](https://user-images.githubusercontent.com/56406481/170394286-b86ffd55-a8fb-4f2b-a3e4-88d5af509b62.png)
 
+## Documentacion :neckbeard:
+
+- [Click aquí para la documentacion](https://docs.google.com/document/d/1wGC4wTk7F5qkzgaWLeb7Qw4DiPhNnDUku-vDG0EsHfg/edit?usp=sharing)
 
 ## Autores :star_struck:
 
