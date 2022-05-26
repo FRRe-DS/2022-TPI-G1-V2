@@ -50,4 +50,4 @@ Aqui presentamos que cosas necesitas para correr la aplicacion.
 
 ## Despedida
 
-Fue un gusto trabajar en este proyecto y compartir nuestros conocimientos. Con :heart: Por :alien:[ianklebold](https://github.com/ianklebold) 
+Fue un gusto trabajar en este proyecto y compartir nuestros conocimientos. Con :heart: Por :alien:[ianklebold](https://github.com/ianklebold) y :alien:[xlmriosx](https://github.com/xlmriosx)
