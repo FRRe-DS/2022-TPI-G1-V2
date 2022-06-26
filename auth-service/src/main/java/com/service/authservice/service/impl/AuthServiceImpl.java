@@ -42,4 +42,10 @@ public class  AuthServiceImpl implements AuthService{
         return userRepository.findAll();
     }
     
+    @Override
+    public User getUserByEmail(String email) {
+        
+        return userRepository.findByEmail(email).get();
+    }
+    
 }
