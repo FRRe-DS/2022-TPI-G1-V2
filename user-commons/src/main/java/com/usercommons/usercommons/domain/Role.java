@@ -1,4 +1,4 @@
-package com.service.authservice.domain;
+package com.usercommons.usercommons.domain;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.service.authservice.domain;
+package com.usercommons.usercommons.domain;
 
 import java.util.ArrayList;
 import java.util.List;
