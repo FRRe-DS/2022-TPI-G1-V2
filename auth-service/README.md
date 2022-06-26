@@ -1,2 +1,0 @@
-# 2022-TPI-G1
-TPI Grupo 1 
