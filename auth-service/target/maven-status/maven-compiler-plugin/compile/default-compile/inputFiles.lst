@@ -8,6 +8,7 @@
 /home/administrador/Facultad/4to/Cliente-Servidor/TPI 2022/auth-service/src/main/java/com/service/authservice/mapper/UserMapper.java
 /home/administrador/Facultad/4to/Cliente-Servidor/TPI 2022/auth-service/src/main/java/com/service/authservice/AuthServiceApplication.java
 /home/administrador/Facultad/4to/Cliente-Servidor/TPI 2022/auth-service/src/main/java/com/service/authservice/service/AuthService.java
+/home/administrador/Facultad/4to/Cliente-Servidor/TPI 2022/auth-service/src/main/java/com/service/authservice/config/SecurityJwtBeans.java
 /home/administrador/Facultad/4to/Cliente-Servidor/TPI 2022/auth-service/src/main/java/com/service/authservice/service/impl/AuthServiceImpl.java
 /home/administrador/Facultad/4to/Cliente-Servidor/TPI 2022/auth-service/src/main/java/com/service/authservice/dto/response/ResponsePost.java
 /home/administrador/Facultad/4to/Cliente-Servidor/TPI 2022/auth-service/src/main/java/com/service/authservice/config/DataLoaderRunner.java

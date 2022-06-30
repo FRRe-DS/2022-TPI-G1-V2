@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.service.authservice.config.SecurityJwtBeans;
 import com.service.authservice.domain.Role;
 import com.service.authservice.domain.User;
 import com.service.authservice.dto.forms.user.PostUserDTO;
@@ -16,11 +17,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserMapper {
     private final RoleRepository roleRepository;
-
+    private final SecurityJwtBeans securityJwtBeans;
+    
     public User mapperNewUser(PostUserDTO user){
         User newUser = new User();
         newUser.setEmail(user.getEmail());
-        newUser.setPassword(user.getPassword());
+        newUser.setPassword(securityJwtBeans.passwordEncoder().encode(user.getPassword()));
         setRoleUser(newUser);
         return newUser;
     }
@@ -28,7 +30,7 @@ public class UserMapper {
     public User mapperNewAdmin(PostUserDTO user){
         User newUser = new User();
         newUser.setEmail(user.getEmail());
-        newUser.setPassword(user.getPassword());
+        newUser.setPassword(securityJwtBeans.passwordEncoder().encode(user.getPassword()));
         setRoleAdmin(newUser);
         return newUser;
     }

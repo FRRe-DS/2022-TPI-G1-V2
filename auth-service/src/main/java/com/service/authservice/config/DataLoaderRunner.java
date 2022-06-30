@@ -24,6 +24,7 @@ public class DataLoaderRunner implements CommandLineRunner {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final SecurityJwtBeans securityJwtBeans;
     
     @Override
     public void run(String... args) throws Exception {
@@ -50,7 +51,7 @@ public class DataLoaderRunner implements CommandLineRunner {
                 System.out.println("No hay admins");
                 PostUserDTO user = new PostUserDTO();
                 user.setEmail("admin@mail.com");
-                user.setPassword("admin");
+                user.setPassword(securityJwtBeans.passwordEncoder().encode("admin"));
                 userRepository.save(userMapper.mapperNewAdmin(user));
             }
         }

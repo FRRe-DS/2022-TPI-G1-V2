@@ -41,7 +41,7 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body(authService.getUser()); 
     }
     //TODO CAMBIAR REQUEST PARAM
-    @GetMapping("/users")
+    @GetMapping("/users/param")
     public ResponseEntity<User> getaUserByEmail(@RequestParam(value="email") String email){
         return ResponseEntity.status(HttpStatus.OK).body(authService.getUserByEmail(email)); 
     }
