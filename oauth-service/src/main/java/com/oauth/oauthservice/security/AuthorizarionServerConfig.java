@@ -21,8 +21,10 @@ import lombok.RequiredArgsConstructor;
 @EnableAuthorizationServer
 @RequiredArgsConstructor
 public class AuthorizarionServerConfig extends AuthorizationServerConfigurerAdapter{
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+   
     private final AuthenticationManager authenticationManager;
 
     public void configure(AuthorizationServerSecurityConfigurer security )throws Exception {
