@@ -7,8 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,8 +28,7 @@ public class Dues {
     @Column(name = "payment_date")
     private LocalDate paymentDate= LocalDate.now();
 
-    @OneToOne(cascade = {})
-    @JoinColumn(name="payment", nullable = false, updatable = true)
+    @ManyToOne(cascade = {})
     private Payment payment;
 
 }
