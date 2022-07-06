@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class Dues {
     @Id
@@ -26,7 +28,7 @@ public class Dues {
     private Double amount;
     
     @Column(name = "payment_date")
-    private LocalDate paymentDate= LocalDate.now();
+    private LocalDate paymentDate;
 
     @ManyToOne(cascade = {})
     private Payment payment;
