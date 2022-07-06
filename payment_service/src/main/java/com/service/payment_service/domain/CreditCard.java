@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import com.service.payment_service.enums.CardTypeEnum;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class CreditCard {
     @Id
