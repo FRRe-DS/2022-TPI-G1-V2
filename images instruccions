@@ -1,0 +1,24 @@
+--> 1 ) docker network create springcloud
+
+Eureka
+
+--> docker build -t eureka-server:v1 .
+--> docker run -p 8761:8761 --name eureka-server --network springcloud eureka-server:v1
+
+
+MYSQL
+
+Bajar la imagen de Mysql8 
+
+--> docker pull mysql:8
+
+--> docker run -p 3307:3306 --name=springcloud-mysql8 --network springcloud -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=tpidacsdb -d mysql:8 
+
+--> docker logs -f springcloud-mysql8
+
+
+Health Service 
+
+--> docker build -t service-health-insurance:v1 .
+
+--> docker run -p 8003:8003 --network springcloud service-health-insurance:v1
