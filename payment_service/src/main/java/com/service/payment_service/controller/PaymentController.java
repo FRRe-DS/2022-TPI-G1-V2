@@ -22,7 +22,6 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/payment")
 public class PaymentController {
     
     private final PaymentServiceImpl paymentService;

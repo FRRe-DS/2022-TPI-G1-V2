@@ -23,12 +23,11 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/card")
 public class CreditCardController {
 
     private final CreditCardService creditService;
     private final ErrorMapper errorMapper;
-    @PostMapping
+    @PostMapping("card")
     public ResponseEntity<?> createCreditCard(@RequestBody CreditCardPostDTO creditCardPostDTO){
         ResponseDTO response = new ResponseDTO();
         
@@ -47,7 +46,7 @@ public class CreditCardController {
 
 
 
-    @GetMapping("/{id}")
+    @GetMapping("card/{id}")
     public ResponseEntity<List<CreditCard>> getPaymentsByClient(@PathVariable(name = "id") Long id){
         
         return new ResponseEntity<List<CreditCard>>(creditService.getAllCardsByClient(id), HttpStatus.OK);   

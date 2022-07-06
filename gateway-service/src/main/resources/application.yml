@@ -32,15 +32,10 @@ spring:
               - Path=/api/v1/travel/**
             filters:
               - StripPrefix=3      
-          - id: oauth-service
-            uri: lb://oauth-service
+          - id: payment-service
+            uri: lb://payment-service
             predicates:
-              - Path=/api/v1/security/**
+              - Path=/api/v1/payment/**
             filters:
               - StripPrefix=3 
-          - id: auth-service
-            uri: lb://auth-service
-            predicates:
-              - Path=/api/v1/auth/**
-            filters:
-              - StripPrefix=3            
+      
