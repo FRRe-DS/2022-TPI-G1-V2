@@ -22,3 +22,56 @@ Health Service
 --> docker build -t service-health-insurance:v1 .
 
 --> docker run -p 8003:8003 --network springcloud service-health-insurance:v1
+
+Lodging Service
+
+--> docker build -t lodging-service:v1 .
+
+--> docker run -p 8005:8005 --network springcloud lodging-service:v1
+
+Matches Service
+
+--> docker build -t match-service:v1 .
+
+--> docker run -p 8001:8001 --network springcloud match-service:v1
+
+
+Payment Service
+
+
+--> docker build -t payment-service:v1 .
+
+--> docker run -p 8007:8007 --network springcloud payment-service:v1
+
+
+Travel Service
+
+--> docker build -t travel-service:v1 .
+
+--> docker run -p 8004:8004 --network springcloud travel-service:v1
+
+
+Zull Gateway Service
+
+--> docker build -t zull-server:v1 .
+
+--> docker run -p 8090:8090 --network springcloud zull-server:v1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
