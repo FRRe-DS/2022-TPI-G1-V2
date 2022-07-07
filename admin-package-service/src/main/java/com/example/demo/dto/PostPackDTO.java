@@ -24,5 +24,7 @@ public class PostPackDTO {
     private Long lodging;
     private List<Long> matches = new ArrayList<>();
     private Long travel;
+
+    private int totalDues;
     
 }

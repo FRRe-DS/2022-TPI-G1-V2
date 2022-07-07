@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.example.demo.domain.Pack;
 import com.example.demo.dto.GetPackDTO;
+import com.example.demo.dto.PaymentPostDTO;
 import com.example.demo.dto.PostPackDTO;
 import com.example.demo.request.GetMatchByIdDTO;
 import com.example.demo.service.HealthClientRest;
@@ -47,6 +48,23 @@ public class PackMapper {
             return (controlRelational(pack,postPackDTO))?pack:null;            
     }
 
+    public PaymentPostDTO paymentMapper(Long packId,int totalDues){
+
+        PaymentPostDTO payment = new PaymentPostDTO();
+
+        payment.setClient(null);
+        payment.setPack(packId);
+        
+        if(totalDues <= 0){
+            payment.setTotalDues(1);
+        }else{
+            payment.setTotalDues(totalDues);
+        }
+          
+        
+        return payment;
+    }
+
     private Boolean controlRelational(Pack pack,PostPackDTO postPackDTO){
         if(controlMatches(postPackDTO.getMatches())){
             pack.setMatches(postPackDTO.getMatches());
@@ -66,8 +84,8 @@ public class PackMapper {
             return false;
         }
         
-        if(controlTravel(postPackDTO.getTravel())){
-            pack.setTravel(postPackDTO.getTravel());
+        if(controlLodging(postPackDTO.getLodging())){
+            pack.setLodging(postPackDTO.getLodging());
         }else{
             return false;
         }
@@ -80,7 +98,7 @@ public class PackMapper {
              .title(pack.getTitle())
              .cost(pack.getCost())
              .description(pack.getDescription())
-             .cost(pack.getCost()-(pack.getCost()*(pack.getCost()/100)))
+             .cost(pack.getCost())
              .contact(pack.getContact())
              .discount(pack.getDiscount())
              .reserved(pack.getReserved())

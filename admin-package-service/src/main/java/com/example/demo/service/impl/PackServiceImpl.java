@@ -5,10 +5,12 @@ import java.util.List;
 
 import com.example.demo.domain.Pack;
 import com.example.demo.dto.GetPackDTO;
+import com.example.demo.dto.PaymentPostDTO;
 import com.example.demo.dto.PostPackDTO;
 import com.example.demo.mapper.PackMapper;
 import com.example.demo.repository.PackRepository;
 import com.example.demo.service.PackService;
+import com.example.demo.service.PaymentClientRest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ import lombok.AllArgsConstructor;
 public class PackServiceImpl implements PackService{
     
     private final PackMapper packMapper;
+    private final PaymentClientRest paymentClientRest;
     private final PackRepository packRepository;
 
     @Override
@@ -27,7 +30,13 @@ public class PackServiceImpl implements PackService{
         
         Pack pack = packMapper.packMapper(postPackDTO);
         if(pack != null){
-            return packRepository.save(pack);
+            Pack newPack = packRepository.save(pack);
+
+            PaymentPostDTO paymentPostDTO = 
+            packMapper.paymentMapper(newPack.getId(), postPackDTO.getTotalDues());
+            paymentClientRest.createPayment(paymentPostDTO);
+
+            return packRepository.save(newPack);
         }else{
             return null;
         }
