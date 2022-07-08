@@ -1,0 +1,119 @@
+version: '3.7'
+services:
+  eureka-server:
+    image: eureka-server:v1
+    ports:
+      - "8761:8761"
+    restart: always
+    networks:
+      - springcloud
+  springcloud-mysql8:
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    restart: always
+    networks:
+      - springcloud
+    environment:
+      - MYSQL_DATABASE=tpidacsdb
+      - MYSQL_ROOT_PASSWORD=1234
+  service-health-insurance:
+    image: service-health-insurance:v1
+    ports:
+      - "8003:8003"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+  lodging-service:
+    image: lodging-service:v1
+    ports:
+      - "8005:8005"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+  match-service:
+    image: match-service:v1
+    ports:
+      - "8001:8001"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+  payment-service:
+    image: payment-service:v1
+    ports:
+      - "8007:8007"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+  travel-service:
+    image: travel-service:v1
+    ports:
+      - "8004:8004"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+  package-admin-service:
+    image: package-admin-service:v1
+    ports:
+      - "8002:8002"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+      - service-health-insurance
+      - lodging-service
+      - match-service
+      - payment-service
+      - travel-service
+  package-client-service:
+    image: package-client-service:v1
+    ports:
+      - "8009:8009"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+      - service-health-insurance
+      - lodging-service
+      - match-service
+      - payment-service
+      - travel-service
+      - package-admin-service
+  zull-server:
+    image: zull-server:v1
+    ports:
+      - "8090:8090"
+    restart: always
+    networks:
+      - springcloud
+    depends_on:
+      - eureka-server
+      - springcloud-mysql8
+      - service-health-insurance
+      - lodging-service
+      - match-service
+      - payment-service
+      - travel-service
+      - package-admin-service
+      - package-client-service
+networks:
+  springcloud:
