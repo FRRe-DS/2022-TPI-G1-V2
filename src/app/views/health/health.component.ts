@@ -13,7 +13,7 @@ export class HealthCrudComponent implements OnInit {
     headerService.headerData = {
       title: 'Cadastro de Produtos',
       icon: 'storefront',
-      routeUrl: '/healths'
+      routeUrl: 'healths'
     }
   }
 

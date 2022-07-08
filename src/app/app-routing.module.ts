@@ -1,8 +1,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HealthCrudComponent } from "./views/health/health.component";
 
 import { HomeComponent } from "./views/home/home.component";
+import { HealthCrudComponent } from "./views/health/health.component";
+import { HealthCreateComponent } from "./shared/components/health/health-create/health-create.component";
+import { HealthUpdateComponent } from "./shared/components/health/health-update/health-update.component";
+import { HealthDeleteComponent } from "./shared/components/health/health-delete/health-delete.component";
 
 
 const routes: Routes = [
@@ -13,6 +16,18 @@ const routes: Routes = [
   {
     path: "healths",
     component: HealthCrudComponent
+  },
+  {
+    path: "healths/create",
+    component: HealthCreateComponent
+  },
+  {
+    path: "healths/update/:id",
+    component: HealthUpdateComponent
+  },
+  {
+    path: "healths/delete/:id",
+    component: HealthDeleteComponent
   },
 ];
 
