@@ -47,7 +47,7 @@ public class CreditCardController {
 
 
     @GetMapping("card/{id}")
-    public ResponseEntity<List<CreditCard>> getPaymentsByClient(@PathVariable(name = "id") Long id){
+    public ResponseEntity<List<CreditCard>> getAllCardsByClient(@PathVariable(name = "id") Long id){
         
         return new ResponseEntity<List<CreditCard>>(creditService.getAllCardsByClient(id), HttpStatus.OK);   
     }

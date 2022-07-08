@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.domain.Pack;
 import com.example.demo.dto.ErrorDTO;
+import com.example.demo.dto.GetDetailPack;
 import com.example.demo.dto.GetPackDTO;
 import com.example.demo.dto.PostPackDTO;
 import com.example.demo.dto.ResponseDTO;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,8 +48,38 @@ public class PackController {
 
     }
 
+    @GetMapping("/{idPack}")
+    public ResponseEntity<?> getPackById(@PathVariable(name = "idPack") Long idPack){
+        GetDetailPack pack = packServiceImpl.getPackById(idPack);
+        
+        if(pack == null){
+            return new ResponseEntity<String>("No exists pack", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<GetDetailPack>(pack, HttpStatus.OK);
+        }
+        
+    }
+
+
     @GetMapping
     public ResponseEntity<?> getPacks(){
+        List<GetPackDTO> packs = packServiceImpl.getAllPacks();
+        
+        if(packs == null){
+            return new ResponseEntity<String>("No exists packs", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<List<GetPackDTO>>(packs, HttpStatus.OK);
+        }
+        
+    }
+
+    @PutMapping("/{id}")
+    public void updateStateOfPack(@PathVariable(name = "id") Long id){
+        packServiceImpl.updateStateOfPack(id);    
+    }
+
+    @GetMapping("/notreserved")
+    public ResponseEntity<?> getPacksNotReserved(){
         List<GetPackDTO> packs = packServiceImpl.getAllPacks();
         
         if(packs == null){

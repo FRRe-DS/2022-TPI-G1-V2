@@ -49,4 +49,5 @@ public class PaymentController {
     public ResponseEntity<List<Payment>> getPayments(){
         return new ResponseEntity<List<Payment>>(paymentService.getPayments(), HttpStatus.OK);
     }
+
 }

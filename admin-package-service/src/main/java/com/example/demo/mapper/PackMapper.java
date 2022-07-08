@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.demo.domain.Pack;
+import com.example.demo.dto.GetDetailPack;
 import com.example.demo.dto.GetPackDTO;
+import com.example.demo.dto.Payment;
+import com.example.demo.dto.PaymentGetDTO;
 import com.example.demo.dto.PaymentPostDTO;
 import com.example.demo.dto.PostPackDTO;
 import com.example.demo.request.GetMatchByIdDTO;
@@ -119,6 +122,43 @@ public class PackMapper {
 
              return packRequest;
      }
+     public GetDetailPack  packDetailGetMapper(Pack pack, Payment payment) {
+        GetDetailPack packRequest = GetDetailPack.builder()
+             .id(pack.getId())
+             .title(pack.getTitle())
+             .cost(pack.getCost())
+             .description(pack.getDescription())
+             .cost(pack.getCost())
+             .contact(pack.getContact())
+             .discount(pack.getDiscount())
+             .reserved(pack.getReserved())
+             .date(pack.getCreationDate())
+             .paymentGetDTO(paymentDetailMapper(payment))
+             .build();
+         
+             if(!pack.getMatches().isEmpty())
+             packRequest.setMatches(loadMatches(pack.getMatches()));
+
+             if(!pack.getHealthInsurance().isEmpty())
+             packRequest.setHealthInsurance(loadHealths(pack.getHealthInsurance()));
+             
+             if(pack.getTravel() != null)
+             packRequest.setTravel(loadTravel(pack.getTravel()));
+             
+             if(pack.getLodging() != null)
+             packRequest.setLodging(loadLodging(pack.getLodging()));
+
+             return packRequest;
+     }
+
+    private PaymentGetDTO paymentDetailMapper(Payment payment){
+        PaymentGetDTO paymentRequest = PaymentGetDTO.builder()
+                        .id(payment.getId())
+                        .paymentDate(payment.getPaymentDate())
+                        .totalDues(payment.getTotalDues())
+                        .build();
+        return paymentRequest;
+    }
     
     private Boolean controlMatches(List<Long> matchesId){
         int errors = 0;
