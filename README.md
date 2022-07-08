@@ -36,10 +36,6 @@ Aqui presentamos que cosas necesitas para correr la aplicacion.
 -    3. Luego levantar Gateway server
 - 3 Ahora podemos utilizar las apis con postman, en el repositorio te dejamos los archivos para probar la API
 
-## Documentacion :neckbeard:
-
-- [Click aquí para la documentacion](https://docs.google.com/document/d/1wGC4wTk7F5qkzgaWLeb7Qw4DiPhNnDUku-vDG0EsHfg/edit?usp=sharing)
-
 ## Autores :star_struck:
 
 - Fernández Ian - *Desarrollador, Tester, Documentación* - :alien:[ianklebold](https://github.com/ianklebold)
@@ -153,7 +149,8 @@ El API Gateway es la puerta de entrada, la cual se sirve del servicio de Login y
 
 ### Modelo Físico
 
-![Vista desde Dbeaver](https://user-images.githubusercontent.com/56406481/170394286-b86ffd55-a8fb-4f2b-a3e4-88d5af509b62.png)
+![8](https://user-images.githubusercontent.com/56406481/178039735-bcc47328-893a-46c1-880d-a4a16242f816.png)
+
 
 --->[Index](#index)
 
