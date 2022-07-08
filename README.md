@@ -36,10 +36,6 @@ Aqui presentamos que cosas necesitas para correr la aplicacion.
 -    3. Luego levantar Gateway server
 - 3 Ahora podemos utilizar las apis con postman, en el repositorio te dejamos los archivos para probar la API
 
-## Documentacion :neckbeard:
-
-- [Click aquí para la documentacion](https://docs.google.com/document/d/1wGC4wTk7F5qkzgaWLeb7Qw4DiPhNnDUku-vDG0EsHfg/edit?usp=sharing)
-
 ## Autores :star_struck:
 
 - Fernández Ian - *Desarrollador, Tester, Documentación* - :alien:[ianklebold](https://github.com/ianklebold)
@@ -153,7 +149,8 @@ El API Gateway es la puerta de entrada, la cual se sirve del servicio de Login y
 
 ### Modelo Físico
 
-![Vista desde Dbeaver](https://user-images.githubusercontent.com/56406481/170394286-b86ffd55-a8fb-4f2b-a3e4-88d5af509b62.png)
+![8](https://user-images.githubusercontent.com/56406481/178039735-bcc47328-893a-46c1-880d-a4a16242f816.png)
+
 
 --->[Index](#index)
 
@@ -279,7 +276,9 @@ Response:
     lodging: {lodging1},	
     reserved: {reserved1},
     title: {title1},
-    travel: {travel1}
+    travel: {travel1},
+    lodging: {lodging1},
+    match : [{match1}, {match2}...]
 },
 {
     id: {id2},	
@@ -291,7 +290,9 @@ Response:
     lodging: {lodging2},	
     reserved: {reserved2},
     title: {title2},
-    travel: {travel2}
+    travel: {travel2},
+    lodging: {lodging1},
+    match : [{match1}, {match2}...]
 }, ...
 ```
 
@@ -353,37 +354,6 @@ Para que la accion sea correcta se necesita que el status sea el siguiente: `STA
 
 --->[Index APIs](#apis)
 
----
-
-### Package Client Services API<a name="packages_client_services_api"></a>
-
-1. [Descripcion](#descripcion_packages_client_services_api)
-3. [Modelo Fisico](#modelo_fisico_packages_client_services_api)
-4. [Requests](#requests_packages_client_services_api)
-
-#### Descripcion<a name="descripcion_packages_client_services_api"></a>
-
-#### Modelo Fisico<a name="modelo_fisico_packages_client_services_api"></a>
-
-#### Requests<a name="requests_packages_client_services_api"></a>
-
-##### Methods
-
-###### POST
-
---->[Index Package Client Services](#packages_client_services_api)
-
-###### GET
-
---->[Index Package Client Services](#packages_client_services_api)
-
-###### DELETE
-
---->[Index Package Client Services](#packages_client_services_api)
-
---->[Index APIs](#apis)
-
----
 
 ### Payment Service API<a name="payment_service_api"></a>
 
@@ -947,11 +917,156 @@ Para que la accion sea correcta se necesita que el status sea el siguiente: `STA
 
 ---
 
+### Package Client Service <a name="package_client_service_api"></a>
+
+1. [Descripcion](#descripcion_package_cliente_services_api)
+2. [Requests](#requests_package_cliente_services_api)
+
+#### Descripcion<a name="descripcion_package_cliente_services_api"></a>
+Esta API se sirve de la API de paquetes que es manejada por un administrador. Su principal funcionalidad es permitir al cliente ver los paquetes cargados y disponibles en el sistema, a su vez de permitirle comprar/reservar un paquete
+
+#### Requests<a name="requests_package_cliente_services_api"></a>
+Endpoint: `/api/v1/fantur/`
+
+##### Methods
+
+###### GET
+
+- Descripcion: GET ALL PACKAGES
+
+URL: DNS + `/api/v1/fantur/packages`
+
+Response:
+```
+{
+    id: {id1},	
+    contact: {contact1},	
+    cost: {cost1},	
+    creation_date: {creation_date1},	
+    description: {description1},	
+    discount: {discount1},	
+    lodging: {lodging1},	
+    reserved: {reserved1},
+    title: {title1},
+    travel: {travel1},
+    lodging: {lodging1},
+    match : [{match1}, {match2}...]
+},
+{
+    id: {id2},	
+    contact: {contact2},	
+    cost: {cost2},	
+    creation_date: {creation_date2},	
+    description: {description2},	
+    discount: {discount2},	
+    lodging: {lodging2},	
+    reserved: {reserved2},
+    title: {title2},
+    travel: {travel2},
+    lodging: {lodging1},
+    match : [{match1}, {match2}...]
+}, ...
+```
+###### PUT
+
+- Descripcion: BUY PACKAGE, UPDATE STATE PAYMENT
+
+URL: DNS + `/api/v1/fantur/payment/{id_payment}/card/{id_card}`
+
+Response:
+
+```
+{
+    id: {id},
+    amount : {amount}
+    paymentDate : {paymentDate}
+    paymentId : {paymentId}
+}
+```
+
 ## Configuracion de enrutamiento<a name="configuracion_de_enrutamiento"/>
 
-![image](https://user-images.githubusercontent.com/78567418/170409867-2dac7dbe-6dff-40f2-9c9a-8da50c89bd96.png)
+![2](https://user-images.githubusercontent.com/56406481/178035308-e8a2f1a4-fcb8-42da-badb-ad3f870b937c.png)
+
+## Configuracion de docker<a name="configuracion_de_docker"/>
+```
+--> docker pull mysql:8
+
+--> docker run -p 3307:3306 --name=springcloud-mysql8 --network springcloud -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=tpidacsdb -d mysql:8 
+
+--> docker logs -f springcloud-mysql8
+```
+
+```
+Health Service 
+
+--> docker build -t service-health-insurance:v1 .
+
+--> docker run -p 8003:8003 --name=service-health-insurance --network springcloud service-health-insurance:v1
+```
+
+```
+Lodging Service
+
+--> docker build -t lodging-service:v1 .
+
+--> docker run -p 8005:8005 --name=lodging-service --network springcloud lodging-service:v1
+```
+
+
+```
+Matches Service
+
+--> docker build -t match-service:v1 .
+
+--> docker run -p 8001:8001 --name=match-service --network springcloud match-service:v1
+```
+
+```
+Payment Service
+
+
+--> docker build -t payment-service:v1 .
+
+--> docker run -p 8007:8007 --name=payment-service --network springcloud payment-service:v1
+```
+
+```
+Travel Service
+
+--> docker build -t travel-service:v1 .
+
+--> docker run -p 8004:8004 --name=travel-service --network springcloud travel-service:v1
+```
+
+```
+Admin package Service
+
+--> docker build -t package-admin-service:v1 .
+
+--> docker run -p 8002:8002 --name=package-admin-service --network springcloud package-admin-service:v1
+```
+
+```
+Client package Service
+
+--> docker build -t package-client-service:v1 .
+
+--> docker run -p 8009:8009 --name=package-client-service --network springcloud package-client-service:v1
+```
+
+```
+Zull Gateway Service
+
+--> docker build -t zull-server:v1 .
+
+--> docker run -p 8090:8090 --name=zull-server --network springcloud zull-server:
+```
 
 --->[Index](#index)
+
+![Screenshot from 2022-07-08 02-59-17](https://user-images.githubusercontent.com/56406481/178038500-b8e89332-3495-49d9-919f-d7c374f7be1b.png)
+
 
 ## Conclusion<a name="conclusion"/>
 
