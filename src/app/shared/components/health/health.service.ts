@@ -9,6 +9,9 @@ import { map, catchError } from "rxjs/operators";
   providedIn: "root",
 })
 export class HealthService {
+  static read(): Health[] {
+      throw new Error('Method not implemented.');
+  }
   baseUrl = "http://localhost:8090/api/v1/health/services";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}

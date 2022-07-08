@@ -15,7 +15,7 @@ export class HealthReadComponent implements OnInit {
   constructor(private healthService: HealthService) { }
 
   ngOnInit(): void {
-      this.healthService.read().subscribe(healths => {
+    this.healthService.read().subscribe(healths => {
       this.healths = healths
     })
   }

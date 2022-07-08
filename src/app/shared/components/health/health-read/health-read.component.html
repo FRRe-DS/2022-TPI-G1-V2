@@ -8,9 +8,28 @@
   
       <!-- Name Column -->
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let row">{{row.description}}</td>
       </ng-container>
 
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let row">
+            <a routerLink="/healths/update/{{ row.id }}" class="edit">
+                <i class="material-icons">
+                    edit
+                </i>
+            </a>
+            <a routerLink="/healths/delete/{{ row.id }}" class="delete">
+                <i class="material-icons">
+                    delete
+                </i>
+            </a>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>

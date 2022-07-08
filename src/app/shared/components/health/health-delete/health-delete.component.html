@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-title>Excluir Produto</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome"
+                [value]="health.description" description="description" disabled>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="deleteHealth()" color="warn">
+        Excluir
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</mat-card>
